@@ -11,6 +11,7 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         playing = true
     }
 })
+let sprite: game.LedSprite = null
 let hz = 0
 let playing = false
 let delay = 0
@@ -18,13 +19,15 @@ music.setVolume(50)
 delay = 100
 let base_hz = 262
 basic.forever(function () {
-    hz = base_hz + (input.rotation(Rotation.Roll) + 0)
-    serial.writeValue("delay", delay)
-    serial.writeValue("hz", hz)
+    hz = base_hz + input.rotation(Rotation.Roll) * 1.5
     if (playing) {
         music.ringTone(hz)
+        sprite = game.createSprite(randint(0, 5), randint(0, 5))
+        serial.writeValue("delay", delay)
+        serial.writeValue("hz", hz)
         basic.pause(delay)
     }
     music.stopAllSounds()
+    sprite.delete()
     basic.pause(delay)
 })
