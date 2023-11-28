@@ -26,8 +26,8 @@ basic.forever(function () {
         serial.writeValue("delay", delay)
         serial.writeValue("hz", hz)
         basic.pause(delay)
+        sprite.delete()
     }
-    music.stopAllSounds()
-    sprite.delete()
     basic.pause(delay)
+    music.stopAllSounds()
 })
