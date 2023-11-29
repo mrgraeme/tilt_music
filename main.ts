@@ -15,11 +15,11 @@ let sprite: game.LedSprite = null
 let hz = 0
 let playing = false
 let delay = 0
-music.setVolume(50)
+music.setVolume(100)
 delay = 100
-let base_hz = 262
+let base_hz = 440
 basic.forever(function () {
-    hz = base_hz + input.rotation(Rotation.Roll) * 1.5
+    hz = base_hz + input.rotation(Rotation.Roll) * 2
     if (playing) {
         music.ringTone(hz)
         sprite = game.createSprite(randint(0, 5), randint(0, 5))
